@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Logout Form</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+
+    .container h2 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #333;
+    }
+
+    .input-field {
+      margin-bottom: 15px;
+      position: relative;
+    }
+
+    .input-field input {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .input-field input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    .message {
+      margin-top: 20px;
+      color: #28a745;
+      font-size: 16px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .container {
+        width: 90%;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="login-container">
+    <h2>Login</h2>
+    <div class="input-field">
+      <input type="text" id="username" placeholder="Enter your username" required>
+    </div>
+    <div class="input-field">
+      <input type="password" id="password" placeholder="Enter your password" required>
+    </div>
+    <button class="button" onclick="login()">Login</button>
+    <div class="message hidden" id="login-message">Login successful!</div>
+  </div>
+
+  <div class="container hidden" id="logout-container">
+    <h2>Welcome, <span id="user"></span>!</h2>
+    <button class="button" onclick="logout()">Logout</button>
+    <div class="message hidden" id="logout-message">You have logged out successfully!</div>
+  </div>
+
+  <script>
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      if (username === 'user' && password === 'password') {
+        document.getElementById('login-container').classList.add('hidden');
+        document.getElementById('logout-container').classList.remove('hidden');
+        document.getElementById('user').innerText = username;
+        document.getElementById('login-message').classList.remove('hidden');
+      } else {
+        alert('Invalid username or password!');
+      }
+    }
+
+    function logout() {
+      document.getElementById('logout-container').classList.add('hidden');
+      document.getElementById('login-container').classList.remove('hidden');
+      document.getElementById('login-message').classList.add('hidden');
+      document.getElementById('logout-message').classList.remove('hidden');
+
+      setTimeout(function() {
+        document.getElementById('logout-message').classList.add('hidden');
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>
