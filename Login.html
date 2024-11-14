@@ -111,10 +111,11 @@
       var password = document.getElementById('password').value;
 
       if (username === 'user' && password === 'password') {
-        document.getElementById('login-container').classList.add('hidden');
-        document.getElementById('logout-container').classList.remove('hidden');
-        document.getElementById('user').innerText = username;
-        document.getElementById('login-message').classList.remove('hidden');
+        //document.getElementById('login-container').classList.add('hidden');
+        //document.getElementById('logout-container').classList.remove('hidden');
+        //document.getElementById('user').innerText = username;
+        //document.getElementById('login-message').classList.remove('hidden');
+        window.location.href = "https://cmspweb.ip.tv/";
       } else {
         alert('Invalid username or password!');
       }
